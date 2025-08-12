@@ -4,13 +4,14 @@ import java.util.Scanner;
  *
  *
  *  @author Loic
- *  @version 1.1
+ *  @version 1.2
  *  @since 2025-08-12
  */
 public class Main {
 
     static int boxesToMove = 0;
     static int truckCapacity = 0;
+    static int totalTravels = 0;
 
     /**
      * Asks for the user to give a positive integer, and returns it if the value is correct.
@@ -56,6 +57,7 @@ public class Main {
      * Entry point of the program.
      * Asks the user to give a number of boxes and the maximum capacity of the truck
      * Then it displays each travel of the truck with the number of boxes moved, until it reaches 0.
+     * The last travel gives the total number of travels that have been realised
      *
      * @param args arguments given in terminal
      */
@@ -70,10 +72,13 @@ public class Main {
             if (boxesToMove >= truckCapacity) {
                 afficherMessage("Un voyage de " + truckCapacity + " cartons");
                 boxesToMove =  boxesToMove - truckCapacity;
+                totalTravels ++;
             }
             else {
-                afficherMessage("Un voyage de " + boxesToMove + " cartons, fin du déménagement !");
+                totalTravels ++;
+                afficherMessage("Un voyage de " + boxesToMove + " cartons, fin du déménagement en " + totalTravels + " trajets !");
                 boxesToMove = 0;
+
             }
         }
     }
