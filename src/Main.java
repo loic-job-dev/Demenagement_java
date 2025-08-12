@@ -1,45 +1,29 @@
 import java.util.Scanner;
 
 public class Main {
+
+    //Définition de la fonction utilitaire
+    public static int isInt() {
+        Scanner clavier = new Scanner(System.in);
+
+        while (!clavier.hasNextInt()) {
+            System.out.println("Merci de saisir un nombre entier");
+            clavier.next();
+        }
+        return clavier.nextInt();
+    }
+
     public static void main(String[] args) {
         int boxesToMove = 0;
         int truckCapacity = 0;
-        boolean isInt = false;
-
-        Scanner clavier = new Scanner(System.in);
 
         //Définition et vérification du nombre de cartons
-        while (!isInt) {
-            System.out.println("Saisir le nombre de catons : ");
-            //Si la saisie est un int
-            if (clavier.hasNextInt()) {
-                boxesToMove = clavier.nextInt();
-                isInt = true;
-            }
-            //Sinon on boucle
-            else {
-                System.out.println("Merci de saisir un nombre entier");
-                clavier.next();
-            }
-        }
-
-        //Réinitialisation du booléen isInt
-        isInt = false;
-
+        System.out.println("Merci de renseigner le nombre de cartons :");
+        boxesToMove = isInt();
         //Définition et vérification de la capacité du camion
-        while (!isInt) {
-            System.out.println("Saisir la capacité du camion : ");
-            //Si la saisie est un int
-            if (clavier.hasNextInt()) {
-                truckCapacity = clavier.nextInt();
-                isInt = true;
-            }
-            //Sinon on boucle
-            else {
-                System.out.println("Merci de saisir un nombre entier");
-                clavier.next();
-            }
-        }
+        System.out.println("Merci de renseigner la capacité maximale du camion :");
+        truckCapacity = isInt();
+
 
         //Déménagement
         while (boxesToMove>0) {
@@ -52,6 +36,5 @@ public class Main {
                 boxesToMove = 0;
             }
         }
-        clavier.close();
     }
 }
