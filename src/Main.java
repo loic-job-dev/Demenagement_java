@@ -9,8 +9,17 @@ import java.util.Scanner;
  */
 public class Main {
 
+    /**
+     * Number of boxes to move, given by the user.
+     */
     static int boxesToMove = 0;
+    /**
+     * Number of boxes the truck can move by each travel, given by the user.
+     */
     static int truckCapacity = 0;
+    /**
+     * Number of travels done to accomplish the move out.
+     */
     static int totalTravels = 0;
 
     /**
