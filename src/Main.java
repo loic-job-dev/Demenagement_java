@@ -13,20 +13,34 @@ public class Main {
     static int truckCapacity = 0;
 
     /**
-     * Asks for the user to give an integer, and returns it if the value is correct.
+     * Asks for the user to give a positive integer, and returns it if the value is correct.
      *
      * @param message the message displayed to ask the user which integer is wanted
      * @return the value of the integer given by the user.
      */
-    private static int getInt(String message) {
+    private static int getPosInt(String message) {
         Scanner clavier = new Scanner(System.in);
+        boolean isValid = false;
+        int numberTested = 0;
 
         afficherMessage(message);
-        while (!clavier.hasNextInt()) {
-            afficherMessage("Merci de saisir un nombre entier");
-            clavier.next();
+
+        while (!isValid) {
+            if (!clavier.hasNextInt()) {
+                afficherMessage("Merci de saisir un nombre entier positif");
+                clavier.next();
+            }
+            else {
+                numberTested = clavier.nextInt();
+                if (numberTested < 0) {
+                    afficherMessage("Merci de saisir un nombre entier positif");
+                }
+                else {
+                    isValid = true;
+                }
+            }
         }
-        return clavier.nextInt();
+        return numberTested;
     }
 
     /**
@@ -48,9 +62,9 @@ public class Main {
     public static void main(String[] args) {
 
         //Définition et vérification du nombre de cartons
-        boxesToMove = getInt("Veuillez renseigner le nombre de cartons");
+        boxesToMove = getPosInt("Veuillez renseigner le nombre de cartons");
         //Définition et vérification de la capacité du camion
-        truckCapacity = getInt("Veuillez renseigner la capacité maximale du camion");
+        truckCapacity = getPosInt("Veuillez renseigner la capacité maximale du camion");
 
         while (boxesToMove >0) {
             if (boxesToMove >= truckCapacity) {
