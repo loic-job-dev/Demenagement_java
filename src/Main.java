@@ -4,7 +4,7 @@ import java.util.Scanner;
  *
  *
  *  @author Loic
- *  @version 1.0
+ *  @version 1.1
  *  @since 2025-08-12
  */
 public class Main {
@@ -15,11 +15,13 @@ public class Main {
     /**
      * Asks for the user to give an integer, and returns it if the value is correct.
      *
+     * @param message the message displayed to ask the user which integer is wanted
      * @return the value of the integer given by the user.
      */
-    private static int getInt() {
+    private static int getInt(String message) {
         Scanner clavier = new Scanner(System.in);
 
+        afficherMessage(message);
         while (!clavier.hasNextInt()) {
             afficherMessage("Merci de saisir un nombre entier");
             clavier.next();
@@ -46,11 +48,9 @@ public class Main {
     public static void main(String[] args) {
 
         //Définition et vérification du nombre de cartons
-        afficherMessage("Veuillez renseigner le nombre de cartons");
-        boxesToMove = getInt();
+        boxesToMove = getInt("Veuillez renseigner le nombre de cartons");
         //Définition et vérification de la capacité du camion
-        afficherMessage("Veuillez renseigner la capacité maximale du camion");
-        truckCapacity = getInt();
+        truckCapacity = getInt("Veuillez renseigner la capacité maximale du camion");
 
         while (boxesToMove >0) {
             if (boxesToMove >= truckCapacity) {
