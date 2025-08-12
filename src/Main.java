@@ -58,7 +58,7 @@ public class Main {
                 boxesToMove =  boxesToMove - truckCapacity;
             }
             else {
-                afficherMessage("Un voyage de " + boxesToMove + " cartons");
+                afficherMessage("Un voyage de " + boxesToMove + " cartons, fin du déménagement !");
                 boxesToMove = 0;
             }
         }
