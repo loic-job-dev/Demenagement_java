@@ -33,17 +33,17 @@ public class Main {
         boolean isValid = false;
         int numberTested = 0;
 
-        afficherMessage(message);
+        displayMessage(message);
 
         while (!isValid) {
             if (!clavier.hasNextInt()) {
-                afficherMessage("Merci de saisir un nombre entier positif");
+                displayMessage("Merci de saisir un nombre entier positif");
                 clavier.next();
             }
             else {
                 numberTested = clavier.nextInt();
                 if (numberTested < 0) {
-                    afficherMessage("Merci de saisir un nombre entier positif");
+                    displayMessage("Merci de saisir un nombre entier positif");
                 }
                 else {
                     isValid = true;
@@ -58,7 +58,7 @@ public class Main {
      *
      * @param message is the String that will be displayed
      */
-    private static void afficherMessage(String message) {
+    private static void displayMessage(String message) {
         System.out.println(message);
     }
 
@@ -79,13 +79,13 @@ public class Main {
 
         while (boxesToMove >0) {
             if (boxesToMove >= truckCapacity) {
-                afficherMessage("Un voyage de " + truckCapacity + " cartons");
+                displayMessage("Un voyage de " + truckCapacity + " cartons");
                 boxesToMove =  boxesToMove - truckCapacity;
                 totalTravels ++;
             }
             else {
                 totalTravels ++;
-                afficherMessage("Un voyage de " + boxesToMove + " cartons, fin du déménagement en " + totalTravels + " trajets !");
+                displayMessage("Un voyage de " + boxesToMove + " cartons, fin du déménagement en " + totalTravels + " trajets !");
                 boxesToMove = 0;
 
             }
